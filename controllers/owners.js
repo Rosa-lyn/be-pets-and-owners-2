@@ -4,12 +4,14 @@ const {
   fetchOwnerById,
   updateOwner,
   deleteOwnerById,
-} = require('../models/owners.js');
+} = require("../models/owners.js");
 
 const getAllOwners = (req, res) => {
-  fetchAllOwners()
-}
+  fetchAllOwners((err, owners) => {
+    res.send(owners);
+  });
+};
 
 module.exports = {
-  getAllOwners
+  getAllOwners,
 };

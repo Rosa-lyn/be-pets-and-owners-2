@@ -1,6 +1,17 @@
+const { readFile, readdir } = require("fs");
+
 const createOwner = (data, cb) => {};
 
-const fetchAllOwners = (cb) => {};
+const fetchAllOwners = (cb) => {
+  readdir("./data/owners", (err, ownerFiles) => {
+    // console.log(ownerFiles);
+    ownerFiles.forEach((ownerFile) => {
+      readFile(`./data/owners/${ownerFile}`, "utf8", (err, owner) => {
+        console.log(owner);
+      });
+    });
+  });
+};
 
 const fetchOwnerById = (id, cb) => {};
 
