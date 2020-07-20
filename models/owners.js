@@ -1,7 +1,4 @@
-const {
-  readFile,
-  readdir
-} = require("fs");
+const { readFile, readdir } = require("fs");
 
 const createOwner = (data, cb) => {};
 
@@ -25,8 +22,13 @@ const fetchAllOwners = (cb) => {
 };
 
 const fetchOwnerById = (id, cb) => {
-  //readdir(`./data/owners/${}`)
-
+  readFile(`./data/owners/${id}.json`, "utf8", (err, ownerId) => {
+    if (err) console.log(err);
+    else {
+      const owner = JSON.parse(ownerId);
+      cb(null, owner);
+    }
+  });
 };
 
 const updateOwner = (id, data, cb) => {};

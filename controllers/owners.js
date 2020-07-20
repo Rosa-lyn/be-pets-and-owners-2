@@ -11,22 +11,24 @@ const getAllOwners = (req, res) => {
     if (err) console.log(err);
     else {
       res.send({
-        owners
+        owners,
       });
     }
   });
 };
 
 const getOwnerById = (req, res) => {
-  fetchOwnerById((err, owners) => {
+  const { ownerId } = req.params;
+  // console.log(ownerId);
+  fetchOwnerById(ownerId, (err, owner) => {
     if (err) console.log(err);
     else {
-      console.log(req.params);
+      res.send({ owner });
     }
-  })
-}
+  });
+};
 
 module.exports = {
   getAllOwners,
-  getOwnerById
+  getOwnerById,
 };
