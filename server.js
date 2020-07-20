@@ -1,5 +1,7 @@
 const express = require("express");
-const { getAllOwners } = require("./controllers/owners");
+const {
+  getAllOwners
+} = require("./controllers/owners");
 
 const app = express();
 
