@@ -1,4 +1,7 @@
-const { readFile, readdir } = require("fs");
+const {
+  readFile,
+  readdir
+} = require("fs");
 
 const createOwner = (data, cb) => {};
 
@@ -21,7 +24,10 @@ const fetchAllOwners = (cb) => {
   });
 };
 
-const fetchOwnerById = (id, cb) => {};
+const fetchOwnerById = (id, cb) => {
+  //readdir(`./data/owners/${}`)
+
+};
 
 const updateOwner = (id, data, cb) => {};
 

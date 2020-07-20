@@ -1,6 +1,7 @@
 const express = require("express");
 const {
-  getAllOwners
+  getAllOwners,
+  getOwnerById
 } = require("./controllers/owners");
 
 const app = express();
@@ -10,6 +11,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/owners", getAllOwners);
+
+app.get("/api/owners/:ownerId", getOwnerById);
 
 app.listen(9090, () => {
   console.log("app is listening on port 9090");
