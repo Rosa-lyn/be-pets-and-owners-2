@@ -1,21 +1,23 @@
-const {
-  readFile,
-  readdir
-} = require("fs");
+const { readFile, readdir } = require("fs");
 
 const createOwner = (data, cb) => {};
 
 const fetchAllOwners = (cb) => {
   readdir("./data/owners", (err, ownerFiles) => {
-    const ownersArr = [];
-    // console.log(ownerFiles);
-    ownerFiles.forEach((ownerFile) => {
-      readFile(`./data/owners/${ownerFile}`, "utf8", (err, owner) => {
-        console.log(owner);
-        ownersArr.push(JSON.parse(owner))
-        console.log(ownersArr);
+    if (err) console.log(err);
+    else {
+      const ownersArr = [];
+      // console.log(ownerFiles); -> ['o1.json', 'o2.json', ...]
+      ownerFiles.forEach((ownerFile) => {
+        readFile(`./data/owners/${ownerFile}`, "utf8", (err, owner) => {
+          // console.log(owner);
+          ownersArr.push(JSON.parse(owner));
+          if (ownersArr.length === ownerFiles.length) {
+            cb(null, ownersArr);
+          }
+        });
       });
-    });
+    }
   });
 };
 

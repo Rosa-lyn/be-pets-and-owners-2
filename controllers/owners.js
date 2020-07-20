@@ -8,7 +8,10 @@ const {
 
 const getAllOwners = (req, res) => {
   fetchAllOwners((err, owners) => {
-    res.send(owners);
+    if (err) console.log(err);
+    else {
+      res.send({ owners });
+    }
   });
 };
 
