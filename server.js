@@ -1,22 +1,28 @@
 const express = require("express");
-const { getAllOwners, getOwnerById } = require("./controllers/owners");
+const apiRouter = require("./routes/api.router")
 
-const { getPetsByOwnerId } = require("./controllers/pets");
+const {
+  getAllOwners,
+  getOwnerById
+} = require("./controllers/owners");
+
+const {
+  getPetsByOwnerId
+} = require("./controllers/pets");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("hello!");
-});
+app.use('/api', apiRouter)
 
-app.get("/api/owners", getAllOwners);
+// app.get("/", (req, res) => {
+//   res.send("hello!");
+// });
 
-app.get("/api/owners/:ownerId", getOwnerById);
+// app.get("/api/owners", getAllOwners);
 
-app.get("/api/pets/:ownerId", getPetsByOwnerId);
+// app.get("/api/owners/:ownerId", getOwnerById);
 
-app.listen(9090, () => {
-  console.log("app is listening on port 9090");
-});
+//app.get("/api/owners/:ownerId/pets", getPetsByOwnerId);
 
+module.exports = app;
 //address already in use :::9090
