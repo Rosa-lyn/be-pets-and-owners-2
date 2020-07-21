@@ -15,4 +15,14 @@ const getPetsByOwnerId = (req, res) => {
   });
 };
 
-module.exports = { getPetsByOwnerId };
+const getPetById = (req, res) => {
+  const { petId } = req.params;
+  fetchPetById(petId, (err, pet) => {
+    if (err) console.log(err);
+    else {
+      res.send({ pet });
+    }
+  });
+};
+
+module.exports = { getPetsByOwnerId, getPetById };

@@ -2,7 +2,9 @@ const { readFile, readdir } = require("fs");
 
 const createPet = (ownerId, data, cb) => {};
 
-const fetchPetById = (id, cb) => {};
+const fetchPetById = (id, cb) => {
+  readFile(`./data/pets/${id}`, "utf8", (err, pet));
+};
 
 const fetchPetsByOwnerId = (ownerId, cb) => {
   // Get all pets and filter only pets belonging to owner
