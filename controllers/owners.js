@@ -18,17 +18,37 @@ const getAllOwners = (req, res) => {
 };
 
 const getOwnerById = (req, res) => {
-  const { ownerId } = req.params;
+  const {
+    ownerId
+  } = req.params;
   // console.log(ownerId);
   fetchOwnerById(ownerId, (err, owner) => {
     if (err) console.log(err);
     else {
-      res.send({ owner });
+      res.send({
+        owner
+      });
     }
   });
 };
 
+const patchOwner = (req, res) => {
+  const {
+    ownerId
+  } = req.params;
+  updateOwner(ownerId, ownerData, (err, updatedOwner) => {
+    if (err) console.log(err);
+    else {
+      res.send({
+        updatedOwner
+      })
+    }
+  })
+
+}
+
 module.exports = {
   getAllOwners,
   getOwnerById,
+  patchOwner
 };

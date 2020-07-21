@@ -1,9 +1,19 @@
-const { readFile, readdir } = require("fs");
+const {
+  readFile,
+  readdir
+} = require("fs");
 
 const createPet = (ownerId, data, cb) => {};
 
 const fetchPetById = (id, cb) => {
-  readFile(`./data/pets/${id}`, "utf8", (err, pet));
+  readFile(`./data/pets/${id}.json`, "utf8", (err, pet) => {
+    if (err) console.log(err);
+    else {
+      const finalPet = JSON.parse(pet)
+      cb(null, finalPet)
+    }
+
+  });
 };
 
 const fetchPetsByOwnerId = (ownerId, cb) => {

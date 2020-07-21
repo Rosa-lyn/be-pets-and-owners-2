@@ -1,4 +1,7 @@
-const { readFile, readdir } = require("fs");
+const {
+  readFile,
+  readdir
+} = require("fs");
 
 const createOwner = (data, cb) => {};
 
@@ -31,7 +34,9 @@ const fetchOwnerById = (id, cb) => {
   });
 };
 
-const updateOwner = (id, data, cb) => {};
+const updateOwner = (id, data, cb) => {
+  //DO MODEL
+};
 
 const deleteOwnerById = (id, cb) => {};
 
