@@ -8,7 +8,10 @@ app.use("/api", apiRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);
-  res.status(404).send({ msg: "owner not found" });
+  // if (err.hasOwnProperty('status'))  
+  res.status(404).send({
+    msg: "owner not found"
+  });
 });
 
 module.exports = app;

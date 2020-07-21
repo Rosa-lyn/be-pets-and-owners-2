@@ -18,7 +18,9 @@ const getAllOwners = (req, res) => {
 };
 
 const getOwnerById = (req, res, next) => {
-  const { ownerId } = req.params;
+  const {
+    ownerId
+  } = req.params;
   // console.log(ownerId);
   fetchOwnerById(ownerId, (err, owner) => {
     if (err) next(err);
@@ -31,7 +33,11 @@ const getOwnerById = (req, res, next) => {
 };
 
 const patchOwner = (req, res) => {
-  const { ownerId } = req.params;
+  const ownerData = req.body
+  // console.log(req.body)
+  const {
+    ownerId
+  } = req.params;
   updateOwner(ownerId, ownerData, (err, updatedOwner) => {
     if (err) console.log(err);
     else {

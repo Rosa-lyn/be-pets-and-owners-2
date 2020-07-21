@@ -1,4 +1,7 @@
-const { readFile, readdir } = require("fs");
+const {
+  readFile,
+  readdir
+} = require("fs");
 
 const createOwner = (data, cb) => {};
 
@@ -32,8 +35,22 @@ const fetchOwnerById = (id, cb) => {
 };
 
 const updateOwner = (id, data, cb) => {
-  //DO MODEL
+  //let parsedData = JSON.parse(data);
+  //console.log(data)
+  readFile(`./data/owners/${id}.json`, "utf8", (err, owner) => {
+      if (err) cb(err);
+      else if (owner.age !== data.age) {
+        owner.age = data.age;
+      } else if (owner.name !== data.name) {
+        owner.name = data.name
+      }
+      cb(null, owner)
+    }
+
+  )
 };
+
+
 
 const deleteOwnerById = (id, cb) => {};
 
