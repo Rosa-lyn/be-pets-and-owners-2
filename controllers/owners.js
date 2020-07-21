@@ -8,7 +8,7 @@ const {
 
 const getAllOwners = (req, res) => {
   fetchAllOwners((err, owners) => {
-    if (err) console.log(err);
+    if (err) cb(err);
     else {
       res.send({
         owners,
@@ -17,38 +17,33 @@ const getAllOwners = (req, res) => {
   });
 };
 
-const getOwnerById = (req, res) => {
-  const {
-    ownerId
-  } = req.params;
+const getOwnerById = (req, res, next) => {
+  const { ownerId } = req.params;
   // console.log(ownerId);
   fetchOwnerById(ownerId, (err, owner) => {
-    if (err) console.log(err);
+    if (err) next(err);
     else {
       res.send({
-        owner
+        owner,
       });
     }
   });
 };
 
 const patchOwner = (req, res) => {
-  const {
-    ownerId
-  } = req.params;
+  const { ownerId } = req.params;
   updateOwner(ownerId, ownerData, (err, updatedOwner) => {
     if (err) console.log(err);
     else {
       res.send({
-        updatedOwner
-      })
+        updatedOwner,
+      });
     }
-  })
-
-}
+  });
+};
 
 module.exports = {
   getAllOwners,
   getOwnerById,
-  patchOwner
+  patchOwner,
 };
